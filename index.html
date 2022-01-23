@@ -80,6 +80,26 @@
         border-radius: 100%;
     }
     </style>
+    <body>
+    <label id="lblGreetings"></label>
+</body>
+
+<script>
+    var myDate = new Date();
+    var hrs = myDate.getHours();
+
+    var greet;
+
+    if (hrs < 12)
+        greet = 'Good Morning';
+    else if (hrs >= 12 && hrs <= 17)
+        greet = 'Good Afternoon';
+    else if (hrs >= 17 && hrs <= 24)
+        greet = 'Good Evening';
+
+    document.getElementById('lblGreetings').innerHTML =
+        '<b>' + greet + '</b>!';
+</script> 
 <body >
     <div class="toggle">
         <img onclick="toggleMode()" src="/resources/toggleoff.png" id="switch" alt="Toggle Mode" />
