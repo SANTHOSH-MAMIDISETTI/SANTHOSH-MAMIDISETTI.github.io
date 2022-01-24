@@ -1,2 +1,3 @@
 # SANTHOSH-MAMIDISETTI.github.io
-simple personal website
+Personal website
+Santhosh/BudgetArms
