@@ -1,0 +1,78 @@
+.dark-mode {
+    background-color: rgb(4, 56, 112);
+    color: white;
+}
+
+body {
+    background-color: rgba(34, 163, 157, 0.397);
+    color: black;
+}
+
+#dp {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+    max-width: 500px;
+    height: auto;
+    border-radius: 100%;
+}
+
+#about {
+    text-align: center;
+    padding-top: 40px;
+    font-size: large;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+#my-details {
+    text-align: center;
+    padding-block-end: 40;
+    padding-top: 10px;
+    padding-bottom: 3px;
+    font-size: x-large;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+#moreabout {
+    text-align: center;
+    padding-block-end: 20;
+    padding-top: 10px;
+    padding-bottom: 40px;
+    font-size: large;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.link {
+    color: hsl(128, 53%, 19%);
+    text-decoration: none;
+}
+
+.socials {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 220px;
+    height: 220px;
+    border-radius: 100%;
+}
+
+.row {
+    display: flex;
+}
+
+.column {
+    flex: 33.33%;
+    padding: 5px;
+}
+
+.toggle {
+    padding-top: 10px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    border-radius: 100%;
+}
