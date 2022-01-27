@@ -47,5 +47,3 @@ function changeDescription(){
 
 Greeting();
 changeDescription();
-
-<div id="sfcqf3g66u64mnebtrnb5gflkts192pkph4"></div><script type="text/javascript" src="https://counter2.stat.ovh/private/counter.js?c=qf3g66u64mnebtrnb5gflkts192pkph4&down=async" async></script><noscript><a href="https://www.freecounterstat.com" title="visitor counter"><img src="https://counter2.stat.ovh/private/freecounterstat.php?c=qf3g66u64mnebtrnb5gflkts192pkph4" border="0" title="visitor counter" alt="visitor counter"></a></noscript>
