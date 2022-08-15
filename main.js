@@ -1,4 +1,4 @@
-let mydetails=["Student at Amrita","CSE-AIE","trying something new","Member @THE ROBOTICS CLUB","Member @The A.C.M"];
+let mydetails=["Student at Amrita","CSE-AIE","trying something new","Member @THE ROBOTICS CLUB","Member @The A.C.M","Member @ The Amrita Robotics Academy"];
 let Greetingsentences = ["Good Morning","Good Afternoon","Good Evening"];
 let i=1;
 
