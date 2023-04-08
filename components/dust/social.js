@@ -1,4 +1,4 @@
-import { FaGithub, FaFacebook, FaYoutube, FaInstagram, FaNpm, FaLinkedin, FaTwitter, FaMailBulk, FaMailchimp, FaEnvelope } from "react-icons/fa";
+import { FaGithub, FaFacebook, FaYoutube, FaInstagram, FaNpm, FaTwitter, FaLinkedin } from "react-icons/fa";
 import { useState, Fragment } from "react";
 import { clsx } from "clsx";
 
@@ -11,36 +11,34 @@ export default function Social({ type }) {
           fill: clsx('hover:fill-black')
         },
       },
-
       {
-        href: "/LinkedIn",
+        href: "/linkedin",
         icon: {
           icon: FaLinkedin,
-          fill: clsx("hover:fill-blue-900"),
+          fill: clsx('hover:fill-blue-900')
         },
       },
       {
-        href: "/Twitter",
-        icon: {
-          icon: FaTwitter,
-          fill: clsx("hover:fill-blue-500"),
-        },
-      },
-      {
-        href: "/YouTube",
+        href: "/youtube",
         icon: {
           icon: FaYoutube,
-          fill: clsx("hover:fill-red-600"),
+          fill: clsx("hover:fill-red-500"),
         },
       },
       {
-        href: "/Gmail",
+        href: "/instagram",
         icon: {
-          icon: FaEnvelope,
-          fill: clsx("hover:fill-brown-500"),
+          icon: FaInstagram,
+          fill: clsx("hover:fill-[url(#instagram-gradient)]"),
         },
       },
-
+      {
+        href: "/twitter",
+        icon: {
+          icon: FaTwitter,
+          fill: clsx('hover:fill-blue-500'),
+        },
+      },
     ]);
 
     return (

@@ -72,7 +72,7 @@ export default function Projects() {
           fill: clsx("group-hover:fill-[#689F63]"),
         },
         image: {
-          src: "/img/projects/AIException.webp",
+          src: "/img/projects/AiException.webp",
           alt: "AIException",
           layout: "fill",
         },
