@@ -2,6 +2,7 @@ import Image from "next/image";
 import sAge from "s-age";
 import { useState, useEffect } from "react";
 import Waypoints from "../dust/waypoints";
+import { MdCode } from 'react-icons/md';
 
 export default function About() {
   let umur = sAge("Mar 01 2004");
@@ -76,6 +77,14 @@ export default function About() {
                   repository on my Github. Various repositories such as
                   templates or even just a package to make things easier.
                 </p>
+                  <a
+                    href="https://drive.google.com/file/d/1D67FX33QeXAlaezwLQfQXDiTEo6GfbJB/view?usp=share_link"
+                    target="_blank" rel="noopener noreferrer"                   
+                    className="btn rounded-full btn-outline  btn-accent mt-6 md:mt-9"
+                    data-aos="fade-up"
+                  >
+                    <MdCode className="mr-2" /> My Resume
+                  </a>
               </div>
             </div>
           </section>
