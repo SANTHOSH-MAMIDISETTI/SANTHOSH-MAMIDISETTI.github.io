@@ -90,7 +90,7 @@ export default function Navbar() {
                 </div>
                 <div className="flex flex-col items-start justify-end w-full pt-4 md:items-center md:w-1/3 md:flex-row md:py-0">
                   <a
-                    href="/github"
+                    href="https://github.com/SANTHOSH-MAMIDISETTI"
                     className="group w-full px-6 py-2 mb-2 md:mb-0 mr-0 text-base-700 md:px-0 lg:pl-2 md:mr-4 lg:mr-5 md:w-auto"
                   >
                     <FaGithub className="w-6 h-6 inline md:mr-0 mr-2 group-hover:text-gray-600 transition ease-in-out delay-100 duration-100" />
