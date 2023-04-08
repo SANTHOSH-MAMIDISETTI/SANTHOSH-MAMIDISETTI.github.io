@@ -13,11 +13,11 @@ const nextConfig = {
         destination: "https://www.linkedin.com/in/santhosh-mamidisetti/",
         permanent: true,
       },
-      // {
-      //   source: "/youtube",
-      //   destination: "https://www.youtube.com/@santhoshmamidisetti",
-      //   permanent: true,
-      // },
+      {
+        source: "/youtube",
+        destination: "https://www.youtube.com/@santhoshmamidisetti",
+        permanent: true,
+      },
       {
         source: "/instagram",
         destination: "https://instagram.com/santhosh_mamidisetti",
