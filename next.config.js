@@ -1,38 +1,3 @@
-// /** @type {import('next').NextConfig} */
-// const nextConfig = {
-//   reactStrictMode: true,
-//   async redirects() {
-//     return [
-//       {
-//         source: "/github",
-//         destination: "https://github.com/SANTHOSH-MAMIDISETTI",
-//         permanent: true,
-//       },
-//       {
-//         source: "/linkedIn",
-//         destination: "https://www.linkedin.com/in/santhosh-mamidisetti/",
-//         permanent: true,
-//       },
-//       {
-//         source: "/twitter",
-//         destination: "https://twitter.com/_m_santhosh_",
-//         permanent: true,
-//       },
-//       {
-//         source: "/youTube",
-//         destination: "https://www.youtube.com/@santhoshmamidisetti/",
-//         permanent: true,
-//       },
-//       {
-//         source: "/gmail",
-//         destination: "mailto:mamidisettisanthosh2004@gmail.com",
-//         permanent: true,
-//       },
-//     ];
-//   },
-// };
-
-// module.exports = nextConfig
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
@@ -48,11 +13,11 @@ const nextConfig = {
         destination: "https://www.linkedin.com/in/santhosh-mamidisetti/",
         permanent: true,
       },
-      {
-        source: "/youtube",
-        destination: "https://www.youtube.com/@santhoshmamidisetti",
-        permanent: true,
-      },
+      // {
+      //   source: "/youtube",
+      //   destination: "https://www.youtube.com/@santhoshmamidisetti",
+      //   permanent: true,
+      // },
       {
         source: "/instagram",
         destination: "https://instagram.com/santhosh_mamidisetti",

@@ -1,4 +1,4 @@
-import { FaGithub, FaFacebook, FaYoutube, FaInstagram, FaNpm, FaTwitter, FaLinkedin } from "react-icons/fa";
+import { FaGithub, FaYoutube, FaInstagram, FaTwitter, FaLinkedin } from "react-icons/fa";
 import { useState, Fragment } from "react";
 import { clsx } from "clsx";
 
@@ -19,7 +19,7 @@ export default function Social({ type }) {
         },
       },
       {
-        href: "/youtube",
+        href: "https://www.youtube.com/@santhoshmamidisetti",
         icon: {
           icon: FaYoutube,
           fill: clsx("hover:fill-red-500"),
