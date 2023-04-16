@@ -98,7 +98,7 @@ export default function Main() {
 
         <About />
         <Projects />
-        <Contact />
+        {/* <Contact /> */}
       </>
     );
 }
