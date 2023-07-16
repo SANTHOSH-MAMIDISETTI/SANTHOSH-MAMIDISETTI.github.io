@@ -78,7 +78,7 @@ export default function About() {
                   templates or even just a package to make things easier.
                 </p>
                   <a
-                    href="https://drive.google.com/file/d/1mECAUDqNJLaast1YV1SlLX3XsWtsEHqc/view?usp=sharing"
+                    href="https://www.dropbox.com/s/wpdmi56ivwmsi3e/Santhosh_Resume.docx?dl=0"
                     target="_blank" rel="noopener noreferrer"                   
                     className="btn rounded-full btn-outline  btn-accent mt-6 md:mt-9"
                     data-aos="fade-up"
