@@ -37,7 +37,7 @@ export default function Main() {
                 >
                   {`I'm Someone who likes `}
                   <Typed
-                    strings={["coding", "sleeping", "gaming"]}
+                    strings={["𝒞𝑜𝒹𝒾𝓃𝑔", "𝒟𝑒𝓋𝑒𝓁𝑜𝓅𝒾𝓃𝑔", "& 𝒟𝑒𝓅𝓁𝑜𝓎𝒾𝓃𝑔"]}
                     typeSpeed={79}
                     backSpeed={50}
                     backDelay={40}
