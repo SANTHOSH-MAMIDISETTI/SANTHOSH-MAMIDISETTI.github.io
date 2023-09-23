@@ -66,10 +66,8 @@ export default function About() {
                   data-aos-duration="1000"
                 ></div>
                 <p className="mt-2">
-                  {`I am Santhosh Mamidisetti from India, ${umur} years old.
-                   A Software Engineering student, I have known Programming since 2020 and
-                  am quite familiar with C, C++, Java, along several other
-                  languages ​​& frameworks.`}
+                  {`I'm Santhosh Mamidisetti, a ${umur}-year-old 3rd-year CSE AI student. 
+                  I've been into programming since 2020, skilled in C, C++, Python, Java, and various frameworks.`}
                 </p>
                 <p className="mt-5">
                    I have created{" "}
