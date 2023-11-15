@@ -2,22 +2,24 @@ import Image from "next/image";
 import sAge from "s-age";
 import { useState, useEffect } from "react";
 import Waypoints from "../dust/waypoints";
-import { MdCode } from 'react-icons/md';
+import { MdCode } from "react-icons/md";
 
 export default function About() {
   let umur = sAge("Mar 01 2004");
-  let [gh, setGh] = useState('Fetching...');
+  let [gh, setGh] = useState("Fetching...");
   useEffect(() => {
-    (async() => {
+    (async () => {
       try {
-        const res = await fetch("https://api.github.com/users/SANTHOSH-MAMIDISETTI");
+        const res = await fetch(
+          "https://api.github.com/users/SANTHOSH-MAMIDISETTI"
+        );
         const data = await res.json();
         setGh(data);
       } catch {
-        setGh({ public_repos: "several" })
+        setGh({ public_repos: "several" });
       }
-    })()
-  }, [])
+    })();
+  }, []);
 
   return (
     <>
@@ -34,7 +36,7 @@ export default function About() {
         ></path>
       </svg>
       <div className="bg-[#e3f2fd] px-6">
-        <Waypoints target={'toabout'}>
+        <Waypoints target={"toabout"}>
           <section id="about" className="text-black py-20">
             <div className="grid grid-cols-1 md:grid-cols-2">
               <div className="flex justify-center md:mb-0 mb-20 py-5">
@@ -70,19 +72,20 @@ export default function About() {
                   I've been into programming since 2020, skilled in C, C++, Python, Java, and various frameworks.`}
                 </p>
                 <p className="mt-5">
-                   I have created{" "}
+                  I have created{" "}
                   <span className="font-bold">{gh.public_repos}</span> public
                   repository on my Github. Various repositories such as
                   templates or even just a package to make things easier.
                 </p>
-                  <a
-                    href="https://www.dropbox.com/s/wpdmi56ivwmsi3e/Santhosh_Resume.docx?dl=0"
-                    target="_blank" rel="noopener noreferrer"                   
-                    className="btn rounded-full btn-outline  btn-accent mt-6 md:mt-9"
-                    data-aos="fade-up"
-                  >
-                    <MdCode className="mr-2" /> My Resume
-                  </a>
+                <a
+                  href="https://www.dropbox.com/s/wpdmi56ivwmsi3e/Santhosh_Resume.docx?dl=0"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn rounded-full btn-outline  btn-accent mt-6 md:mt-9"
+                  data-aos="fade-up"
+                >
+                  <MdCode className="mr-2" /> My Resume
+                </a>
               </div>
             </div>
           </section>
