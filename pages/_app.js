@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { useEffect } from "react";
 import AOS from "aos";
-import { Analytics } from '@vercel/analytics/react';
+import { Analytics } from "@vercel/analytics/react";
 
 import "aos/dist/aos.css";
 import "../styles/globals.css";
@@ -18,7 +18,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       <Head>
-        <title>Santu — Portfolio</title>
+        <title>Santu - Portfolio</title>
       </Head>
       <Component {...pageProps} />
       <Analytics />
