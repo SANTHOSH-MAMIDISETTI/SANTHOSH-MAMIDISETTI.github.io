@@ -1,0 +1,41 @@
+{
+  "name": "Santhosh Mamidisetti",
+  "occupation": "Software Engineer",
+  "website": "https://mayankd.me",
+  "profiles": [
+    {
+      "network": "GitHub",
+      "url": "https://github.com/santhosh-mamidisetti/",
+      "username": "MayankD409"
+    },
+    {
+      "network": "Twitter",
+      "url": "https://twitter.com/_m_santhosh_",
+      "username": "Mayank_D04"
+    },
+    {
+      "network": "LinkedIn",
+      "url": "https://www.linkedin.com/in/santhosh-mamidisetti/",
+      "username": "mayank-deshpande"
+    }
+  ],
+  "skills": [
+    "Robotics",
+    "Computer Vision",
+    "Perception",
+    "AI",
+    "Machine Learning",
+    "Deep Learning",
+    "Python",
+    "C++",
+    "ROS"
+  ],
+  "education": [
+    {
+      "degree": "Master's degree",
+      "field": "Robotics",
+      "institution": "University of Maryland, College Park",
+      "year": 2025
+    }
+  ]
+} 
