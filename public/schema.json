@@ -7,7 +7,7 @@
       "name": "Santhosh Mamidisetti",
       "givenName": "Mayank",
       "familyName": "Deshpande",
-      "url": "https://mayankd.me",
+      "url": "https://santhosh-mamidisetti.github.io/"midisetti.github.io/",
       "image": "https://mayankd.me/og.png",
       "jobTitle": "Robotics Software Engineer",
       "description": "Software Engineer with expertise in Robotics and AI",
@@ -44,7 +44,7 @@
     {
       "@type": "WebSite",
       "@id": "https://mayankd.me/#website",
-      "url": "https://mayankd.me",
+      "url": "https://santhosh-mamidisetti.github.io/"midisetti.github.io/",
       "name": "Santhosh Mamidisetti - Software Engineer",
       "description": "Personal website and portfolio of Santhosh Mamidisetti, a Software Engineer specializing in Robotics and AI.",
       "publisher": {
@@ -60,7 +60,7 @@
     {
       "@type": "WebPage",
       "@id": "https://mayankd.me/#webpage",
-      "url": "https://mayankd.me",
+      "url": "https://santhosh-mamidisetti.github.io/"midisetti.github.io/",
       "name": "Santhosh Mamidisetti - Software Engineer Portfolio",
       "isPartOf": {
         "@id": "https://mayankd.me/#website"
@@ -77,7 +77,7 @@
     {
       "@type": "ProfilePage",
       "@id": "https://mayankd.me/#profilepage",
-      "url": "https://mayankd.me",
+      "url": "https://santhosh-mamidisetti.github.io/"midisetti.github.io/",
       "name": "Santhosh Mamidisetti - Professional Profile",
       "isPartOf": {
         "@id": "https://mayankd.me/#website"

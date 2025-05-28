@@ -8,7 +8,7 @@
 export const onInitialClientRender = () => {
     if (typeof window !== "undefined") {
       const hostname = window.location.hostname;
-      const targetDomain = "mayankd.me";
+      const targetDomain = "santhosh-mamidisetti.github.io";
       const sourceDomain = "santhosh-mamidisetti.github.io";
   
       if (hostname === sourceDomain) {

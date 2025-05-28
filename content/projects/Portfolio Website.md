@@ -1,8 +1,8 @@
 ---
-date: '04-09-2024'
+date: '28-05-2025'
 title: 'Portfolio Website'
-github: 'https://github.com/santhosh-mamidisetti//MayankD409.github.io.git'
-external: 'https://mayankd.me'
+github: 'https://github.com/santhosh-mamidisetti.github.io.git'
+external: 'https://santhosh-mamidisetti.github.io/'
 tech:
   - ReactJS
   - Gatsby

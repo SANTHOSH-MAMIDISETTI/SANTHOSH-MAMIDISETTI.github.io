@@ -1,14 +1,14 @@
 /* SITE */
 Name: Santhosh Mamidisetti - Personal Portfolio
-URL: https://mayankd.me
+URL: https://santhosh-mamidisetti.github.io
 Description: Personal website of Santhosh Mamidisetti
 Keywords: Santhosh Mamidisetti, robotics, computer vision, AI, Software engineer
 Language: English
 Author: Santhosh Mamidisetti
-Contact: mayank [at] domain.com
-LinkedIn: https://www.linkedin.com/in/santhosh-mamidisetti/
-GitHub: https://github.com/santhosh-mamidisetti/
-Twitter: @Mayank_D04
+Contact: mamidisettisanthosh2004[at]gmail.com
+LinkedIn: https://www.linkedin.com/in/santhosh-mamidisetti
+GitHub: https://github.com/santhosh-mamidisetti
+Twitter: @_m_santhosh_
 
 /* TECHNOLOGY */
 Built with: Gatsby, React, JavaScript

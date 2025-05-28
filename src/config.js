@@ -10,15 +10,15 @@ module.exports = {
     },
     {
       name: 'Instagram',
-      url: 'https://www.instagram.com/_mayankdeshpande_/',
+      url: 'https://www.instagram.com/santhosh_mamidisetti/',
     },
     {
       name: 'Twitter',
-      url: 'https://x.com/Mayank_D04',
+      url: 'https://x.com/_m_santhosh_',
     },
     {
       name: 'Linkedin',
-      url: 'https://www.linkedin.com/in/msdeshpande04/',
+      url: 'https://www.linkedin.com/in/santhosh-mamidisetti/',
     },
     {
       name: 'Medium',

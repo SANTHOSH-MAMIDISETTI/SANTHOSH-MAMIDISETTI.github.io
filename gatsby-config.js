@@ -64,7 +64,7 @@ module.exports = {
       resolve: 'gatsby-plugin-robots-txt',
       options: {
         host: 'https://santhosh-mamidisetti.github.io',
-        sitemap: 'https://mayankd.me/sitemap/sitemap-index.xml',
+        sitemap: 'https://santhosh-mamidisetti.github.io/sitemap/sitemap-index.xml',
         policy: [
           { userAgent: '*', allow: '/' },
           { userAgent: '*', disallow: ['/404'] }
@@ -86,7 +86,7 @@ module.exports = {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: 'Santhosh Mamidisetti - Robotics Software Engineer', 
-        short_name: 'MayankD',
+        short_name: 'SanthoshM',
         start_url: '/',
         background_color: config.colors.darkNavy,
         theme_color: config.colors.navy,
@@ -105,12 +105,12 @@ module.exports = {
           {
             name: 'Projects',
             url: '/#projects',
-            description: 'View Mayank\'s projects'
+            description: 'View Santhosh\'s projects'
           },
           {
             name: 'Contact',
             url: '/#contact',
-            description: 'Get in touch with Mayank'
+            description: 'Get in touch with Santhosh'
           }
         ],
       },
