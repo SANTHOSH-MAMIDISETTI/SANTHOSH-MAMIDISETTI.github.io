@@ -7,6 +7,11 @@ dist/
 # Gatsby leftovers
 .cache/
 
+# public/ contains Vite static assets — ignore everything except what we explicitly track
+/public/*
+!/public/favicon.svg
+!/public/resume.pdf
+
 # Claude memory/plans (local only)
 .claude/
 

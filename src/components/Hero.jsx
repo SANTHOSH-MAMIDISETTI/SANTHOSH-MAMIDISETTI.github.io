@@ -1,6 +1,10 @@
+import { lazy, Suspense } from 'react'
 import { motion } from 'framer-motion'
 import { FiGithub, FiLinkedin, FiTwitter, FiMail } from 'react-icons/fi'
 import { profile } from '../data/profile'
+
+// Lazy-load Three.js — keeps initial bundle small, loads after hero renders
+const ParticleField = lazy(() => import('./ParticleField'))
 
 const container = {
   hidden: { opacity: 0 },
@@ -17,8 +21,13 @@ const item = {
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden dot-grid">
-      {/* Background gradient blobs */}
+    <section className="relative min-h-screen flex items-center overflow-hidden">
+      {/* Three.js particle network — lazy loaded, degrades to nothing if WebGL unavailable */}
+      <Suspense fallback={null}>
+        <ParticleField />
+      </Suspense>
+
+      {/* Soft ambient blobs behind the particles */}
       <div
         className="blob w-[500px] h-[500px] bg-sky-500 animate-blob"
         style={{ top: '-10%', right: '-5%' }}
@@ -28,14 +37,13 @@ export default function Hero() {
         style={{ bottom: '5%', left: '-10%', animationDelay: '3s' }}
       />
 
+      {/* Content — z-10 sits above the canvas */}
       <div className="relative z-10 max-w-5xl mx-auto px-6 pt-24 pb-16 w-full">
         <motion.div variants={container} initial="hidden" animate="show">
-          {/* Greeting */}
           <motion.p variants={item} className="font-mono text-[#38bdf8] text-sm mb-4 tracking-widest">
             Hi, I'm
           </motion.p>
 
-          {/* Name */}
           <motion.h1
             variants={item}
             className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold text-[#e8f4fd] leading-none tracking-tight mb-3"
@@ -45,7 +53,6 @@ export default function Hero() {
             Mamidisetti
           </motion.h1>
 
-          {/* Title */}
           <motion.h2
             variants={item}
             className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#5f7d99] mt-4 mb-8"
@@ -53,7 +60,6 @@ export default function Hero() {
             Robotics Software Engineer
           </motion.h2>
 
-          {/* Tagline */}
           <motion.p
             variants={item}
             className="text-base sm:text-lg text-[#7a9bc4] max-w-xl leading-relaxed mb-10"
@@ -62,7 +68,6 @@ export default function Hero() {
             systems, and perception pipelines that hold up in the real world.
           </motion.p>
 
-          {/* CTAs */}
           <motion.div variants={item} className="flex flex-wrap items-center gap-4 mb-12">
             <a
               href="#projects"
@@ -86,7 +91,6 @@ export default function Hero() {
             </a>
           </motion.div>
 
-          {/* Social links */}
           <motion.div variants={item} className="flex items-center gap-6">
             {[
               { href: profile.socials.github, Icon: FiGithub, label: 'GitHub' },
