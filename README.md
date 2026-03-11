@@ -1,8 +1,10 @@
-# CLAUDE.md
+# Santhosh Mamidisetti — Portfolio
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+Personal portfolio site. Built with Vite 5, React 18, Tailwind CSS 3, and Three.js.
 
-## Commands
+Live at: [santhosh-mamidisetti.github.io](https://santhosh-mamidisetti.github.io/)
+
+## Development
 
 ```bash
 nvm use 20          # Required — default shell may be Node 14

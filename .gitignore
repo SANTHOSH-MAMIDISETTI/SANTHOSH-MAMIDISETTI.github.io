@@ -11,6 +11,8 @@ dist/
 /public/*
 !/public/favicon.svg
 !/public/resume.pdf
+!/public/robots.txt
+!/public/sitemap.xml
 
 # Claude memory/plans (local only)
 .claude/
