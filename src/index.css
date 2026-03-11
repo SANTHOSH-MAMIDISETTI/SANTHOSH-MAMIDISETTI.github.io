@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: #060c16;
+    color: #dce8f5;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  ::selection {
+    background-color: rgba(56, 189, 248, 0.25);
+    color: #e8f4fd;
+  }
+
+  :focus-visible {
+    outline: 2px solid #38bdf8;
+    outline-offset: 3px;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #060c16;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #172437;
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #1e3050;
+  }
+}
+
+@layer utilities {
+  .section-padding {
+    @apply py-24 px-6;
+  }
+  .max-container {
+    @apply max-w-5xl mx-auto;
+  }
+  .accent-text {
+    color: #38bdf8;
+  }
+  .muted-text {
+    color: #5f7d99;
+  }
+  .card-base {
+    background-color: #101d2e;
+    border: 1px solid #172437;
+    border-radius: 12px;
+  }
+}
+
+/* Dot grid background for hero */
+.dot-grid {
+  background-image: radial-gradient(circle, #172437 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+/* Gradient blob */
+.blob {
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.15;
+  position: absolute;
+  pointer-events: none;
+}

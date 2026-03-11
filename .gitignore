@@ -1,10 +1,21 @@
-# Project dependencies
-.cache
-node_modules
-yarn-error.log
-package-lock.json
+# Dependencies
+node_modules/
 
-# Build directory
+# Build output (Vite)
+dist/
+
+# Gatsby leftovers
+.cache/
+
+# Claude memory/plans (local only)
+.claude/
+
+# Env / secrets
+.env
+.env.*
+!.env.example
+
+# Editor
 .DS_Store
-
 .vscode/
+*.swp
