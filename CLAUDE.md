@@ -5,40 +5,39 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Commands
 
 ```bash
-npm run dev        # Start development server (Vite, http://localhost:5173)
-npm run build      # Production build → dist/
-npm run preview    # Preview production build locally
+nvm use 20          # Required — default shell may be Node 14
+npm run dev         # Dev server (Vite, localhost:5173)
+npm run build       # Production build → dist/
+npm run preview     # Preview the dist/ build locally
 ```
-
-> Note: This repo uses Node 20. If on Node 14, run `nvm use 20` first.
 
 ## Architecture
 
-**Vite + React 18 + Tailwind CSS + Framer Motion** portfolio site for Santhosh Mamidisetti.
+**Vite 5 + React 18 + Tailwind CSS 3** portfolio site for Santhosh Mamidisetti.
 
-### Key Entry Points
-- `index.html` — app shell, loads Google Fonts (Inter + JetBrains Mono)
-- `src/main.jsx` → `src/App.jsx` — root component
-- `src/data/profile.js` — **single source of truth for all content** (bio, experience, projects, skills, achievements). Edit this to update site content.
+### Stack
+- `framer-motion` — scroll-linked animations and section entrance effects
+- `react-icons/fi` — Feather icon set
+- `three` + `@react-three/fiber@^8` — 3D particle network (must stay on v8; v9 requires React 19)
 
-### Section Components (`src/components/`)
-`App.jsx` composes these in order: `Nav` → `Hero` → `About` → `Experience` → `FeaturedProjects` → `Projects` → `Skills` → `Achievements` → `Contact` → `Footer`
+### Content
+All site content lives in **`src/data/profile.js`** — single source of truth for bio, experience, projects, skills, achievements, socials, and contact info.
 
-Each section uses `framer-motion`'s `useInView` for scroll-triggered fade-in animations.
+### Components
+All page sections are in `src/components/`. The render order in `App.jsx`:
+`Nav` → `Hero` → `About` → `Experience` → `FeaturedProjects` → `Projects` → `Skills` → `Achievements` → `Contact` → `Footer`
 
-### Styling
-- Tailwind utility classes throughout; no separate CSS files except `src/index.css` (global reset + custom utilities)
-- Color palette: background `#060c16`, surface `#0a1220`, cards `#101d2e`, accent `#38bdf8`
-- `tailwind.config.js` extends colors (`bg`, `surface`, `card`, `border`, `accent`, `muted`) and fonts
+### Three.js
+`GlobalScene.jsx` renders a single fixed-position canvas (`z-0`, `pointer-events-none`) that persists across the entire page. Lazy-loaded via `React.lazy` + `Suspense`. Vite splits it into a separate `three-vendor` chunk (~235KB gzipped, deferred).
+
+Scroll-linked opacity: full in hero → fades to 0.22 past the hero → ambient background throughout. Mouse parallax and scroll depth handled in `useFrame`.
 
 ### Deployment
-GitHub Actions (`.github/workflows/deploy.yml`) triggers on push to `main` branch: runs `npm run build` and deploys `dist/` to the `deploy` branch for GitHub Pages at `santhosh-mamidisetti.github.io`.
+GitHub Actions (`.github/workflows/deploy.yml`) triggers on push to `main`. Builds with Node 20, deploys `dist/` to the `deploy` branch via `peaceiris/actions-gh-pages@v3`.
 
-Resume PDF is served from `public/resume.pdf`.
+Live at: `https://santhosh-mamidisetti.github.io/website-repo/`
 
-### Adding/Updating Content
-All site content lives in `src/data/profile.js`. To update:
-- **Experience**: edit `profile.experience[]`
-- **Featured projects**: edit `profile.featuredProjects[]` (6 cards in 2-column grid; each has a `gradient` Tailwind class for the card accent)
-- **Other projects**: edit `profile.otherProjects[]` (12-item 3-column grid)
-- **Skills**: edit `profile.skills` object (keys become category headers)
+`vite.config.js` uses `base: '/website-repo/'`. All asset links (resume, favicon) use `import.meta.env.BASE_URL` to resolve correctly under this base path.
+
+### Static assets
+`public/favicon.svg` and `public/resume.pdf` are the only tracked files under `public/` — everything else is gitignored. They are copied into `dist/` on build.
