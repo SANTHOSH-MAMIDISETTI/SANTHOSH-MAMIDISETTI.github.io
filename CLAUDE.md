@@ -35,9 +35,9 @@ Scroll-linked opacity: full in hero → fades to 0.22 past the hero → ambient 
 ### Deployment
 GitHub Actions (`.github/workflows/deploy.yml`) triggers on push to `main`. Builds with Node 20, deploys `dist/` to the `deploy` branch via `peaceiris/actions-gh-pages@v3`.
 
-Live at: `https://santhosh-mamidisetti.github.io/website-repo/`
+Live at: `https://santhosh-mamidisetti.github.io/santhosh-mamidisetti.github.io/`
 
-`vite.config.js` uses `base: '/website-repo/'`. All asset links (resume, favicon) use `import.meta.env.BASE_URL` to resolve correctly under this base path.
+`vite.config.js` uses `base: '/santhosh-mamidisetti.github.io/'`. All asset links (resume, favicon) use `import.meta.env.BASE_URL` to resolve correctly under this base path.
 
 ### Static assets
 `public/favicon.svg` and `public/resume.pdf` are the only tracked files under `public/` — everything else is gitignored. They are copied into `dist/` on build.
