@@ -1,9 +1,8 @@
-import { lazy, Suspense } from 'react'
-import { motion } from 'framer-motion'
+import { lazy, Suspense, useRef } from 'react'
+import { motion, useScroll, useTransform } from 'framer-motion'
 import { FiGithub, FiLinkedin, FiTwitter, FiMail } from 'react-icons/fi'
 import { profile } from '../data/profile'
 
-// Lazy-load Three.js — keeps initial bundle small, loads after hero renders
 const ParticleField = lazy(() => import('./ParticleField'))
 
 const container = {
@@ -20,25 +19,41 @@ const item = {
 }
 
 export default function Hero() {
-  return (
-    <section className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Three.js particle network — lazy loaded, degrades to nothing if WebGL unavailable */}
-      <Suspense fallback={null}>
-        <ParticleField />
-      </Suspense>
+  const sectionRef = useRef(null)
+  const { scrollY } = useScroll()
 
-      {/* Soft ambient blobs behind the particles */}
-      <div
-        className="blob w-[500px] h-[500px] bg-sky-500 animate-blob"
-        style={{ top: '-10%', right: '-5%' }}
-      />
-      <div
-        className="blob w-[400px] h-[400px] bg-indigo-600 animate-blob"
-        style={{ bottom: '5%', left: '-10%', animationDelay: '3s' }}
-      />
+  // Fade canvas + blobs as user scrolls: fully gone at 65% of viewport height
+  const bgOpacity = useTransform(scrollY, (y) => {
+    const vh = typeof window !== 'undefined' ? window.innerHeight : 800
+    return Math.max(0, 1 - y / (vh * 0.65))
+  })
+
+  return (
+    <section
+      ref={sectionRef}
+      className="relative min-h-screen flex flex-col justify-center overflow-hidden"
+    >
+      {/* Three.js canvas + ambient blobs — fade out on scroll */}
+      <motion.div className="absolute inset-0 z-0" style={{ opacity: bgOpacity }}>
+        <Suspense fallback={null}>
+          <ParticleField />
+        </Suspense>
+
+        <div
+          className="blob w-[500px] h-[500px] bg-sky-500 animate-blob"
+          style={{ top: '-10%', right: '-5%' }}
+        />
+        <div
+          className="blob w-[400px] h-[400px] bg-indigo-600 animate-blob"
+          style={{ bottom: '5%', left: '-10%', animationDelay: '3s' }}
+        />
+      </motion.div>
+
+      {/* Gradient fade at the bottom so content below blends in */}
+      <div className="absolute bottom-0 left-0 right-0 h-48 z-[1] pointer-events-none bg-gradient-to-t from-[#060c16] to-transparent" />
 
       {/* Content — z-10 sits above the canvas */}
-      <div className="relative z-10 max-w-5xl mx-auto px-6 pt-24 pb-16 w-full">
+      <div className="relative z-10 max-w-5xl mx-auto px-6 w-full pt-24 pb-16">
         <motion.div variants={container} initial="hidden" animate="show">
           <motion.p variants={item} className="font-mono text-[#38bdf8] text-sm mb-4 tracking-widest">
             Hi, I'm
@@ -55,17 +70,16 @@ export default function Hero() {
 
           <motion.h2
             variants={item}
-            className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#5f7d99] mt-4 mb-8"
+            className="text-xl sm:text-2xl md:text-3xl font-semibold text-[#5f7d99] mt-5 mb-6"
           >
             Robotics Software Engineer
           </motion.h2>
 
           <motion.p
             variants={item}
-            className="text-base sm:text-lg text-[#7a9bc4] max-w-xl leading-relaxed mb-10"
+            className="text-base sm:text-lg text-[#7a9bc4] max-w-lg leading-relaxed mb-10"
           >
-            I build robots that make reliable decisions — designing behavior trees, safety
-            systems, and perception pipelines that hold up in the real world.
+            {profile.tagline}
           </motion.p>
 
           <motion.div variants={item} className="flex flex-wrap items-center gap-4 mb-12">

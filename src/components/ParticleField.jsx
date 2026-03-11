@@ -7,6 +7,18 @@ const CONNECTION_DIST = 3.6
 
 function Network({ count }) {
   const groupRef = useRef()
+  const mouseRef = useRef({ x: 0, y: 0 })
+  const lerpedRot = useRef({ x: 0, y: 0 })
+
+  // Track mouse position — normalized to [-0.5, 0.5]
+  useEffect(() => {
+    const handler = (e) => {
+      mouseRef.current.x = e.clientX / window.innerWidth - 0.5
+      mouseRef.current.y = e.clientY / window.innerHeight - 0.5
+    }
+    window.addEventListener('mousemove', handler, { passive: true })
+    return () => window.removeEventListener('mousemove', handler)
+  }, [])
 
   // Generate particle positions and precompute line segments — runs once on mount
   const { pts, lineArr } = useMemo(() => {
@@ -40,12 +52,20 @@ function Network({ count }) {
     }
   }, [count])
 
-  // Very slow rotation — just enough to feel alive, not enough to distract
   useFrame(({ clock }) => {
     if (!groupRef.current) return
     const t = clock.elapsedTime
-    groupRef.current.rotation.y = t * 0.022
-    groupRef.current.rotation.x = t * 0.008
+
+    // Slow idle drift
+    const idleY = t * 0.022
+    const idleX = t * 0.008
+
+    // Lerp toward mouse-driven offset — max ±0.18 rad (~10°) on Y, ±0.12 on X
+    lerpedRot.current.y += (mouseRef.current.x * 0.36 - lerpedRot.current.y) * 0.03
+    lerpedRot.current.x += (-mouseRef.current.y * 0.24 - lerpedRot.current.x) * 0.03
+
+    groupRef.current.rotation.y = idleY + lerpedRot.current.y
+    groupRef.current.rotation.x = idleX + lerpedRot.current.x
   })
 
   return (
