@@ -1,36 +1,40 @@
 import { useRef, useMemo, useState, useEffect } from 'react'
+import { motion, useScroll, useTransform } from 'framer-motion'
 import { Canvas, useFrame } from '@react-three/fiber'
 
-const DESKTOP_COUNT = 120
-const MOBILE_COUNT = 70
+const DESKTOP_COUNT = 100
+const MOBILE_COUNT = 50
 const CONNECTION_DIST = 3.6
 
 function Network({ count }) {
   const groupRef = useRef()
   const mouseRef = useRef({ x: 0, y: 0 })
   const lerpedRot = useRef({ x: 0, y: 0 })
+  const scrollRef = useRef(0)
 
-  // Track mouse position — normalized to [-0.5, 0.5]
   useEffect(() => {
-    const handler = (e) => {
+    const onMouse = (e) => {
       mouseRef.current.x = e.clientX / window.innerWidth - 0.5
       mouseRef.current.y = e.clientY / window.innerHeight - 0.5
     }
-    window.addEventListener('mousemove', handler, { passive: true })
-    return () => window.removeEventListener('mousemove', handler)
+    const onScroll = () => { scrollRef.current = window.scrollY }
+    window.addEventListener('mousemove', onMouse, { passive: true })
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => {
+      window.removeEventListener('mousemove', onMouse)
+      window.removeEventListener('scroll', onScroll)
+    }
   }, [])
 
-  // Generate particle positions and precompute line segments — runs once on mount
   const { pts, lineArr } = useMemo(() => {
     const raw = []
     for (let i = 0; i < count; i++) {
       raw.push(
-        (Math.random() - 0.5) * 22,
+        (Math.random() - 0.5) * 24,
         (Math.random() - 0.5) * 14,
-        (Math.random() - 0.5) * 8,
+        (Math.random() - 0.5) * 10,
       )
     }
-
     const lines = []
     for (let i = 0; i < count; i++) {
       for (let j = i + 1; j < count; j++) {
@@ -38,31 +42,30 @@ function Network({ count }) {
         const dy = raw[i * 3 + 1] - raw[j * 3 + 1]
         const dz = raw[i * 3 + 2] - raw[j * 3 + 2]
         if (dx * dx + dy * dy + dz * dz < CONNECTION_DIST * CONNECTION_DIST) {
-          lines.push(
-            raw[i * 3], raw[i * 3 + 1], raw[i * 3 + 2],
-            raw[j * 3], raw[j * 3 + 1], raw[j * 3 + 2],
-          )
+          lines.push(raw[i * 3], raw[i * 3 + 1], raw[i * 3 + 2])
+          lines.push(raw[j * 3], raw[j * 3 + 1], raw[j * 3 + 2])
         }
       }
     }
-
-    return {
-      pts: new Float32Array(raw),
-      lineArr: new Float32Array(lines),
-    }
+    return { pts: new Float32Array(raw), lineArr: new Float32Array(lines) }
   }, [count])
 
   useFrame(({ clock }) => {
     if (!groupRef.current) return
     const t = clock.elapsedTime
+    const vh = typeof window !== 'undefined' ? window.innerHeight : 800
 
     // Slow idle drift
-    const idleY = t * 0.022
-    const idleX = t * 0.008
+    const idleY = t * 0.018
+    const idleX = t * 0.007
 
-    // Lerp toward mouse-driven offset — max ±0.18 rad (~10°) on Y, ±0.12 on X
-    lerpedRot.current.y += (mouseRef.current.x * 0.36 - lerpedRot.current.y) * 0.03
-    lerpedRot.current.x += (-mouseRef.current.y * 0.24 - lerpedRot.current.x) * 0.03
+    // Mouse parallax — smooth lerp, max ~10° Y / ~7° X
+    lerpedRot.current.y += (mouseRef.current.x * 0.32 - lerpedRot.current.y) * 0.025
+    lerpedRot.current.x += (-mouseRef.current.y * 0.22 - lerpedRot.current.x) * 0.025
+
+    // Scroll depth — network gently recedes as you go deeper
+    const depth = scrollRef.current / vh
+    groupRef.current.position.z = -depth * 0.6
 
     groupRef.current.rotation.y = idleY + lerpedRot.current.y
     groupRef.current.rotation.x = idleX + lerpedRot.current.x
@@ -70,7 +73,6 @@ function Network({ count }) {
 
   return (
     <group ref={groupRef}>
-      {/* Dots */}
       <points>
         <bufferGeometry>
           <bufferAttribute
@@ -80,16 +82,9 @@ function Network({ count }) {
             itemSize={3}
           />
         </bufferGeometry>
-        <pointsMaterial
-          color="#38bdf8"
-          size={0.07}
-          transparent
-          opacity={0.7}
-          sizeAttenuation
-        />
+        <pointsMaterial color="#38bdf8" size={0.07} transparent opacity={0.65} sizeAttenuation />
       </points>
 
-      {/* Connection lines */}
       {lineArr.length > 0 && (
         <lineSegments>
           <bufferGeometry>
@@ -100,19 +95,29 @@ function Network({ count }) {
               itemSize={3}
             />
           </bufferGeometry>
-          <lineBasicMaterial color="#38bdf8" transparent opacity={0.1} />
+          <lineBasicMaterial color="#38bdf8" transparent opacity={0.09} />
         </lineSegments>
       )}
     </group>
   )
 }
 
-export default function ParticleField() {
+export default function GlobalScene() {
   const [webglOk, setWebglOk] = useState(true)
   const [isMobile, setIsMobile] = useState(false)
+  const { scrollY } = useScroll()
+
+  // Hero = full presence; rest of site = ambient background (0.22)
+  const opacity = useTransform(scrollY, (y) => {
+    const vh = typeof window !== 'undefined' ? window.innerHeight : 800
+    const fadeStart = vh * 0.25
+    const fadeEnd = vh * 0.75
+    if (y <= fadeStart) return 1
+    if (y >= fadeEnd) return 0.22
+    return 1 - ((y - fadeStart) / (fadeEnd - fadeStart)) * 0.78
+  })
 
   useEffect(() => {
-    // WebGL support check
     try {
       const canvas = document.createElement('canvas')
       if (!canvas.getContext('webgl') && !canvas.getContext('experimental-webgl')) {
@@ -127,7 +132,11 @@ export default function ParticleField() {
   if (!webglOk) return null
 
   return (
-    <div className="absolute inset-0 z-0 pointer-events-none" aria-hidden="true">
+    <motion.div
+      className="fixed inset-0 z-0 pointer-events-none"
+      aria-hidden="true"
+      style={{ opacity }}
+    >
       <Canvas
         camera={{ position: [0, 0, 12], fov: 55 }}
         gl={{ antialias: false, alpha: true, powerPreference: 'low-power' }}
@@ -136,6 +145,6 @@ export default function ParticleField() {
       >
         <Network count={isMobile ? MOBILE_COUNT : DESKTOP_COUNT} />
       </Canvas>
-    </div>
+    </motion.div>
   )
 }

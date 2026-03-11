@@ -8,7 +8,7 @@ export default function FeaturedProjects() {
   const isInView = useInView(ref, { once: true, margin: '-60px' })
 
   return (
-    <section id="projects" className="py-24 px-6 bg-[#0a1220]">
+    <section id="projects" className="py-24 px-6">
       <div className="max-w-5xl mx-auto" ref={ref}>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
