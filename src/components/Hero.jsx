@@ -81,7 +81,7 @@ export default function Hero() {
                   Get in Touch
                 </a>
                 <a
-                  href="/resume.pdf"
+                  href={`${import.meta.env.BASE_URL}resume.pdf`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-[#5f7d99] hover:text-[#38bdf8] text-sm font-mono transition-colors duration-200"
