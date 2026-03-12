@@ -41,8 +41,7 @@ export default function Contact() {
               <a
                 key={label}
                 href={href}
-                target="_blank"
-                rel="noopener noreferrer"
+                {...(!href.startsWith('mailto:') && { target: '_blank', rel: 'noopener noreferrer' })}
                 aria-label={label}
                 className="text-[#5f7d99] hover:text-[#38bdf8] transition-colors duration-200"
               >

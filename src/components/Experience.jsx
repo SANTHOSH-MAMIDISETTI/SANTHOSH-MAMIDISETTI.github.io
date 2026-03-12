@@ -28,7 +28,7 @@ export default function Experience() {
           <div className="space-y-10">
             {profile.experience.map((job, i) => (
               <motion.div
-                key={job.company + job.range}
+                key={job.role + job.company}
                 initial={{ opacity: 0, y: 24 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: 0.1 + i * 0.12 }}

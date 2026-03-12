@@ -77,9 +77,7 @@ function Network({ count }) {
         <bufferGeometry>
           <bufferAttribute
             attach="attributes-position"
-            array={pts}
-            count={count}
-            itemSize={3}
+            args={[pts, 3]}
           />
         </bufferGeometry>
         <pointsMaterial color="#38bdf8" size={0.07} transparent opacity={0.65} sizeAttenuation />
@@ -90,9 +88,7 @@ function Network({ count }) {
           <bufferGeometry>
             <bufferAttribute
               attach="attributes-position"
-              array={lineArr}
-              count={lineArr.length / 3}
-              itemSize={3}
+              args={[lineArr, 3]}
             />
           </bufferGeometry>
           <lineBasicMaterial color="#38bdf8" transparent opacity={0.09} />
@@ -105,6 +101,7 @@ function Network({ count }) {
 export default function GlobalScene() {
   const [webglOk, setWebglOk] = useState(true)
   const [isMobile, setIsMobile] = useState(false)
+  const [prefersReduced, setPrefersReduced] = useState(false)
   const { scrollY } = useScroll()
 
   // Hero = full presence; rest of site = ambient background (0.22)
@@ -126,10 +123,11 @@ export default function GlobalScene() {
     } catch {
       setWebglOk(false)
     }
+    setPrefersReduced(window.matchMedia('(prefers-reduced-motion: reduce)').matches)
     setIsMobile(window.innerWidth < 768)
   }, [])
 
-  if (!webglOk) return null
+  if (!webglOk || prefersReduced) return null
 
   return (
     <motion.div

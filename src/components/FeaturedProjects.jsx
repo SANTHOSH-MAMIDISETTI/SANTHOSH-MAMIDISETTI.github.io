@@ -48,7 +48,7 @@ function ProjectCard({ project }) {
           <h3 className="text-[#dce8f5] font-semibold text-lg leading-snug group-hover:text-white transition-colors">
             {project.title}
           </h3>
-          {project.github && (
+          {project.github ? (
             <a
               href={project.github}
               target="_blank"
@@ -58,6 +58,10 @@ function ProjectCard({ project }) {
             >
               <FiGithub size={18} />
             </a>
+          ) : (
+            <span className="font-mono text-[10px] text-[#2a4060] border border-[#172437] rounded px-2 py-0.5 shrink-0 mt-0.5">
+              Private
+            </span>
           )}
         </div>
 

@@ -179,7 +179,7 @@ export const profile = {
     {
       role: 'Team Lead, Robotics Club',
       org: 'Amrita Vishwa Vidyapeetham',
-      range: 'Dec 2022 – Present',
+      range: 'Dec 2022 – Jul 2025',
     },
   ],
 }

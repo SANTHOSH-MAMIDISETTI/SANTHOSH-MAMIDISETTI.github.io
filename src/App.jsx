@@ -24,7 +24,7 @@ export default function App() {
       <Nav />
 
       {/* z-10 ensures all page content renders above the fixed canvas */}
-      <main className="relative z-10">
+      <main id="main-content" className="relative z-10">
         <Hero />
         <About />
         <Experience />

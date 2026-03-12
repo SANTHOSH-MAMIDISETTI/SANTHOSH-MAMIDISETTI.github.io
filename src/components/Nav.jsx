@@ -21,9 +21,16 @@ export default function Nav() {
 
   useEffect(() => {
     const handler = () => { if (window.innerWidth >= 768) setMenuOpen(false) }
-    window.addEventListener('resize', handler)
+    window.addEventListener('resize', handler, { passive: true })
     return () => window.removeEventListener('resize', handler)
   }, [])
+
+  useEffect(() => {
+    if (!menuOpen) return
+    const handler = (e) => { if (e.key === 'Escape') setMenuOpen(false) }
+    document.addEventListener('keydown', handler)
+    return () => document.removeEventListener('keydown', handler)
+  }, [menuOpen])
 
   return (
     <header
@@ -70,6 +77,7 @@ export default function Nav() {
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Toggle navigation menu"
           aria-expanded={menuOpen}
+          aria-controls="mobile-menu"
         >
           <span
             className={`block w-6 h-0.5 bg-[#38bdf8] transition-all duration-300 ${
@@ -93,6 +101,7 @@ export default function Nav() {
       <AnimatePresence>
         {menuOpen && (
           <motion.div
+            id="mobile-menu"
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}

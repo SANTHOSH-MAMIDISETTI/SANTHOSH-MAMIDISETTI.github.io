@@ -100,8 +100,7 @@ export default function Hero() {
                   <a
                     key={label}
                     href={href}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    {...(!href.startsWith('mailto:') && { target: '_blank', rel: 'noopener noreferrer' })}
                     aria-label={label}
                     className="text-[#5f7d99] hover:text-[#38bdf8] transition-colors duration-200"
                   >
@@ -121,7 +120,7 @@ export default function Hero() {
           transition={{ delay: 1.4, duration: 0.6 }}
           className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1"
         >
-          <span className="text-[#2a4060] text-xs font-mono tracking-widest">scroll</span>
+          <span className="text-[#5f7d99] text-xs font-mono tracking-widest">scroll</span>
           <motion.div
             animate={{ y: [0, 6, 0] }}
             transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}

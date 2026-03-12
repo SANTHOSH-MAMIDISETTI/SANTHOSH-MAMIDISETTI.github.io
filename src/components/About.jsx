@@ -2,15 +2,23 @@ import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 import { profile } from '../data/profile'
 
-const cards = [
-  { label: 'Current Role', value: 'Robot Software Engineer', sub: 'Clutterbot Technologies' },
-  { label: 'Stack', value: 'C++ · Python · ROS2', sub: 'Behavior Trees, Safety Systems' },
-  { label: 'Education', value: 'B.Tech CSE (AI)', sub: 'Amrita Vishwa Vidyapeetham · 2025' },
-  { label: 'Competition', value: 'IDC Robocon 2024', sub: '1st Runner-Up' },
-]
-
 export default function About() {
   const ref = useRef(null)
+
+  const cards = [
+    { label: 'Current Role', value: profile.experience[0].role, sub: profile.experience[0].company },
+    { label: 'Stack', value: 'C++ · Python · ROS2', sub: 'Behavior Trees, Safety Systems' },
+    {
+      label: 'Education',
+      value: 'B.Tech CSE (AI)',
+      sub: `${profile.education[0].institution} · ${profile.education[0].range.split('–')[1].trim().split(' ').pop()}`,
+    },
+    {
+      label: 'Competition',
+      value: profile.achievements[0].title.split('—')[0].trim(),
+      sub: profile.achievements[0].title.split('—')[1].trim(),
+    },
+  ]
   const isInView = useInView(ref, { once: true, margin: '-80px' })
 
   return (

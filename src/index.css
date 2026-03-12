@@ -39,32 +39,11 @@
   ::-webkit-scrollbar-thumb:hover {
     background: #1e3050;
   }
-}
 
-@layer utilities {
-  .section-padding {
-    @apply py-24 px-6;
+  /* Offset anchor scroll for fixed nav (68px tall) */
+  [id] {
+    scroll-margin-top: 80px;
   }
-  .max-container {
-    @apply max-w-5xl mx-auto;
-  }
-  .accent-text {
-    color: #38bdf8;
-  }
-  .muted-text {
-    color: #5f7d99;
-  }
-  .card-base {
-    background-color: #101d2e;
-    border: 1px solid #172437;
-    border-radius: 12px;
-  }
-}
-
-/* Dot grid background for hero */
-.dot-grid {
-  background-image: radial-gradient(circle, #172437 1px, transparent 1px);
-  background-size: 32px 32px;
 }
 
 /* Gradient blob */
